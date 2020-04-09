@@ -1,1 +1,183 @@
 
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int addmod();  //admission module
+int regmod();     //registration module
+int transmod();   //transcript module
+int paymod(int);    //payment module
+
+
+int main()
+{
+	int a;
+	cout << "Enter the Student record" << endl;
+		a = addmod();
+		cout << "Enter the courses to register"<<a;
+}
+
+
+}
+int addmod()
+{
+	string name, fathername;
+	int date, month, year, regno;
+	string facultyname;
+	int count = 0;
+	fstream file1;
+	file1.open("admission-module.txt", ios::app | ios::binary);
+	cout << "Enter the name of the student\n";
+	getline(cin, name);
+	cout << "Enter father name\n";
+	getline(cin, fathername);
+	cout << "Enter the faculty name\n";
+	getline(cin, facultyname);
+	cout << "Enter the registration number\n";
+	cin >> regno;
+	cout << "For date of birth\n";
+	cout << "Enter date";
+	cin >> date;
+	cout << "Enter month";
+	cin >> month;
+	cout << "Enter year";
+	cin >> year;
+	count = count + 1;
+	cout << "Student no" << count << endl;
+	cout << "name: " << name << endl;
+	cout << "Father number: " << fathername << endl;
+	cout << "date of birth: " << date << "-" << month << "-" << year << endl;
+	cout << "Enter reg number: " << regno << endl;
+	cout << "Enter faculty name: " << facultyname << endl;
+	cout << "total number of students added " << count;
+	cout << endl;
+	file1 << "student # " << count << endl;
+	file1 << "Name: " << name << endl;
+	file1 << "Father number: " << fathername << endl;
+	file1 << "date of birth: " << date << "-" << month << "-" << year << endl;
+	file1 << "Ristration number" << regno << endl;
+	file1 << "Faculty name" << facultyname << endl;
+	file1 << "Total number of students are: " << count << endl << endl << endl;
+	file1.close();
+	return 0;
+}
+int regmode()
+{
+	int x;
+
+	cout << "Courses available for registration are:" << endl;
+	cout << "1) HM101 (English reading and writting)" << endl;
+	cout << "2) CH101 (Chemistry for engineers)" << endl;
+	cout << "3) PH101 (Mechanics)" << endl;
+	cout << "4) MT101 (Calculus 1)" << endl;
+	cout << "5) CH161 (Health and safety)" << endl;
+	cout << "6) CS101 (Introduction to computing)" << endl;
+	cout << "Select courses" << endl;
+	for (int i = 0; i <= 5; i++)
+	{
+		cin >> x;
+		switch (x)
+		{
+		case 1:
+		{  cout << "You are enrolled in HM101" << endl;
+		break;
+		}
+		case 2:
+		{
+			cout << "You are enrolled in CH101" << endl;
+			break;
+		}
+		case 3:
+		{
+			cout << "You are enrolled in PH101" << endl;
+			break;
+		}
+		case 4:
+		{
+			cout << "You are enrolled in MT101" << endl;
+			break;
+		}
+		case 5:
+		{
+			cout << "You are enrolled in CH161" << endl;
+			break;
+		}
+		case 6:
+		{
+			cout << "You are enrolled in CS101" << endl;
+			break;
+		}
+		default:
+		{
+			cout << "You havent selected any of the courses" << endl;
+		}
+		}
+	}
+	return 0;
+}
+int transmod()
+{
+	char grade;
+	int subj;
+	int numb;
+	fstream file1;
+	file1.open("transcript.txt");
+	cout << "press 0 to start.";
+	cin >> numb;
+	file1 << "subjects\t" << "grades" << endl;
+	cout << "press 0 to exit";
+	cout << "select subjects.\n";
+	cout << "1.PH101\n 2.MT101\n 3.CH101\n 4.HM101\n 5.CS101\n 6.CH161\n";
+	cin >> subj;
+	switch (subj)
+	{
+	case 1:
+	{
+		cout << "enter the grades for HM101";
+		cin >> grade;
+		file1 << endl << "HM101\t\t" << grade << endl;
+		break;
+	}
+	case 2:
+	{
+		cout << "enter the grades for CH 101";
+		cin >> grade;
+		file1 << endl << "CH101\t\t" << grade << endl;
+		break;
+	}
+
+	case 3:
+	{
+		cout << "enter the grades for PH101";
+		cin >> grade;
+		file1 << endl << "PH101\t\t" << grade << endl;
+		break;
+	}
+
+	case 4:
+	{
+		cout << "enter the grades for MT101";
+		cin >> grade;
+		file1 << endl << "MT101\t\t" << grade << endl;
+		break;
+	}
+
+	case 5:
+	{
+		cout << "enter the grades for CH 161";
+		cin >> grade;
+		file1 << endl << "CH161\t\t" << grade << endl;
+		break;
+	}
+	case 6:
+	{
+		cout << "enter the grades for CS 101";
+		cin >> grade;
+		file1 << endl << "CS101\t\t" << grade << endl;
+		break;
+	}
+	}
+	cout << "enter 0 to exit.";
+	cin >> numb;
+	return 0;
+}
